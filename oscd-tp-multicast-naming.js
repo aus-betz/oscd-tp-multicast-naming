@@ -49545,21 +49545,23 @@ class TPMulticastNaming extends s$3 {
             },
         };
         // APP IDs
-        const ignoreAppIds = selectedCommElements.map(elem => {
-            var _a, _b, _c;
-            return (_c = (_b = (_a = elem === null || elem === void 0 ? void 0 : elem.querySelector('Address > P[type="APPID"]')) === null || _a === void 0 ? void 0 : _a.textContent) === null || _b === void 0 ? void 0 : _b.toUpperCase()) !== null && _c !== void 0 ? _c : '';
-        });
-        const nextAppId = {
-            GSE: {
-                '1': appIdGenerator(this.doc, 'GSE', '1', ignoreAppIds),
-                '2': appIdGenerator(this.doc, 'GSE', '2', ignoreAppIds),
-                N: appIdGenerator(this.doc, 'GSE', 'N', ignoreAppIds),
-            },
-            SMV: {
-                '1': appIdGenerator(this.doc, 'SMV', '1', ignoreAppIds),
-                '2': appIdGenerator(this.doc, 'SMV', '2', ignoreAppIds),
-            },
-        };
+        // const ignoreAppIds = selectedCommElements.map(
+        //   elem =>
+        //     elem
+        //       ?.querySelector('Address > P[type="APPID"]')!
+        //       ?.textContent?.toUpperCase() ?? ''
+        // );
+        // const nextAppId: AppObject = {
+        //   GSE: {
+        //     '1': appIdGenerator(this.doc, 'GSE', '1', ignoreAppIds),
+        //     '2': appIdGenerator(this.doc, 'GSE', '2', ignoreAppIds),
+        //     N: appIdGenerator(this.doc, 'GSE', 'N', ignoreAppIds),
+        //   },
+        //   SMV: {
+        //     '1': appIdGenerator(this.doc, 'SMV', '1', ignoreAppIds),
+        //     '2': appIdGenerator(this.doc, 'SMV', '2', ignoreAppIds),
+        //   },
+        // };
         // VLANs
         const ignoreVlanIds = selectedCommElements.map(elem => {
             var _a, _b, _c;
@@ -49801,7 +49803,7 @@ class TPMulticastNaming extends s$3 {
             edits = [];
         }
         selectedCommElements.forEach(element => {
-            var _a, _b, _c, _d, _e, _f, _g;
+            var _a, _b, _c, _d, _e;
             const protNum = getProtectionNumber(element.closest('ConnectedAP').getAttribute('iedName'));
             const newMac = nextMac[element.tagName][protNum]();
             edits.push(...updateTextContent(element.querySelector('Address > P[type="MAC-Address"]'), newMac));
@@ -49824,21 +49826,30 @@ class TPMulticastNaming extends s$3 {
                 }
             }
             // APPIDs
-            let protType = protNum;
-            // if it is not protection it is in a different range
-            if (element.tagName === 'GSE' &&
-                !(((_d = element.getAttribute('cbName')) === null || _d === void 0 ? void 0 : _d.toUpperCase().startsWith('CTL')) ||
-                    ((_e = element.getAttribute('cbName')) === null || _e === void 0 ? void 0 : _e.toUpperCase().startsWith('TRIP')))) {
-                protType = 'N';
-            }
-            const newAppId = nextAppId[element.tagName][protType]();
-            edits.push(...updateTextContent(element.querySelector('Address > P[type="APPID"]'), newAppId));
+            // let protType: string = protNum;
+            // // if it is not protection it is in a different range
+            // if (
+            //   element.tagName === 'GSE' &&
+            //   !(
+            //     element.getAttribute('cbName')?.toUpperCase().startsWith('CTL') ||
+            //     element.getAttribute('cbName')?.toUpperCase().startsWith('TRIP')
+            //   )
+            // ) {
+            //   protType = 'N';
+            // }
+            // const newAppId = nextAppId[element.tagName][protType]();
+            // edits.push(
+            //   ...updateTextContent(
+            //     element.querySelector('Address > P[type="APPID"]'),
+            //     newAppId
+            //   )
+            // );
             // PRIORITY
             let priority = '5';
             if (element.tagName === 'SMV' ||
                 (element.tagName === 'GSE' &&
-                    (((_f = element.getAttribute('cbName')) === null || _f === void 0 ? void 0 : _f.toUpperCase().startsWith('CTL')) ||
-                        ((_g = element.getAttribute('cbName')) === null || _g === void 0 ? void 0 : _g.toUpperCase().startsWith('TRIP'))))) {
+                    (((_d = element.getAttribute('cbName')) === null || _d === void 0 ? void 0 : _d.toUpperCase().startsWith('CTL')) ||
+                        ((_e = element.getAttribute('cbName')) === null || _e === void 0 ? void 0 : _e.toUpperCase().startsWith('TRIP'))))) {
                 priority = '6';
             }
             edits.push(...updateTextContent(element.querySelector('Address > P[type="VLAN-PRIORITY"]'), priority));
