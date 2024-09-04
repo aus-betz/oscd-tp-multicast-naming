@@ -1350,13 +1350,13 @@ export default class TPMulticastNaming extends LitElement {
         protType = 'N';
       }
 
-      const newAppId = nextAppId[element.tagName][protType]();
-      edits.push(
-        ...updateTextContent(
-          element.querySelector('Address > P[type="APPID"]'),
-          newAppId
-        )
-      );
+      // const newAppId = nextAppId[element.tagName][protType]();
+      // edits.push(
+      //   ...updateTextContent(
+      //     element.querySelector('Address > P[type="APPID"]'),
+      //     newAppId
+      //   )
+      // );
 
       // PRIORITY
       let priority: string = '5';
