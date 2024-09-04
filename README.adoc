@@ -17,7 +17,8 @@
 // console.log(`https://openscd.github.io/open-scd/?plugins=${encodeURI(JSON.stringify(plugins))}`)
 // then substitute the value within the pass:v[<url>]
 :uri-openwc: https://github.com/open-wc/open-wc
-:uri-plugin: https://github.com/danyill/oscd-tp-multicast-naming
+:uri-originalplugin: https://github.com/danyill/oscd-tp-multicast-naming
+:uri-plugin: https://github.com/aus-betz/oscd-tp-multicast-naming
 :uri-ci-bundle: https://danyill.github.io/oscd-tp-multicast-naming/oscd-tp-multicast-naming.js
 :uri-material-icons: https://fonts.google.com/icons
 :uri-openscd-core-plugin-demo: https://aus-betz.github.io/oscd-tp-multicast-naming/index.deploy.html
@@ -25,7 +26,7 @@
 
 == What is this?
 
-This plugin is intended to allow multicast addressing to meet Transpower requirements.
+This plugin has been forked from the {uri-originalplugin}[Transpower] plugin of the same name and the intention is to modify it to meet the requirements of my employer. THis will include sequential autonumbering of the MAC addresses (unchanged per TP code), and possibly modify the APPID based on certain criteria. The GOOSE AppID (aka GoID) shall remain untouched by the plugin (completed), though I may create some further commands to enable bulk editing of chosen fields.
 
 * This is a plugin for {uri-openscd-core}[open-scd-core], the core
 editor engine for {uri-openscd}[OpenSCD].
