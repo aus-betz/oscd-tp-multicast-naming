@@ -45,11 +45,11 @@ type MacObject = {
   };
 };
 
-type AppObject = {
-  [key: string]: {
-    [key: string]: () => string;
-  };
-};
+// type AppObject = {
+//   [key: string]: {
+//     [key: string]: () => string;
+//   };
+// };
 
 type VlanPair = {
   prot1Id: string;
@@ -951,24 +951,24 @@ export default class TPMulticastNaming extends LitElement {
     };
 
     // APP IDs
-    const ignoreAppIds = selectedCommElements.map(
-      elem =>
-        elem
-          ?.querySelector('Address > P[type="APPID"]')!
-          ?.textContent?.toUpperCase() ?? ''
-    );
+    // const ignoreAppIds = selectedCommElements.map(
+    //   elem =>
+    //     elem
+    //       ?.querySelector('Address > P[type="APPID"]')!
+    //       ?.textContent?.toUpperCase() ?? ''
+    // );
 
-    const nextAppId: AppObject = {
-      GSE: {
-        '1': appIdGenerator(this.doc, 'GSE', '1', ignoreAppIds),
-        '2': appIdGenerator(this.doc, 'GSE', '2', ignoreAppIds),
-        N: appIdGenerator(this.doc, 'GSE', 'N', ignoreAppIds),
-      },
-      SMV: {
-        '1': appIdGenerator(this.doc, 'SMV', '1', ignoreAppIds),
-        '2': appIdGenerator(this.doc, 'SMV', '2', ignoreAppIds),
-      },
-    };
+    // const nextAppId: AppObject = {
+    //   GSE: {
+    //     '1': appIdGenerator(this.doc, 'GSE', '1', ignoreAppIds),
+    //     '2': appIdGenerator(this.doc, 'GSE', '2', ignoreAppIds),
+    //     N: appIdGenerator(this.doc, 'GSE', 'N', ignoreAppIds),
+    //   },
+    //   SMV: {
+    //     '1': appIdGenerator(this.doc, 'SMV', '1', ignoreAppIds),
+    //     '2': appIdGenerator(this.doc, 'SMV', '2', ignoreAppIds),
+    //   },
+    // };
 
     // VLANs
     const ignoreVlanIds = selectedCommElements.map(
@@ -1338,17 +1338,17 @@ export default class TPMulticastNaming extends LitElement {
       }
 
       // APPIDs
-      let protType: string = protNum;
-      // if it is not protection it is in a different range
-      if (
-        element.tagName === 'GSE' &&
-        !(
-          element.getAttribute('cbName')?.toUpperCase().startsWith('CTL') ||
-          element.getAttribute('cbName')?.toUpperCase().startsWith('TRIP')
-        )
-      ) {
-        protType = 'N';
-      }
+      // let protType: string = protNum;
+      // // if it is not protection it is in a different range
+      // if (
+      //   element.tagName === 'GSE' &&
+      //   !(
+      //     element.getAttribute('cbName')?.toUpperCase().startsWith('CTL') ||
+      //     element.getAttribute('cbName')?.toUpperCase().startsWith('TRIP')
+      //   )
+      // ) {
+      //   protType = 'N';
+      // }
 
       // const newAppId = nextAppId[element.tagName][protType]();
       // edits.push(
