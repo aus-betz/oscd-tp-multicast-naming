@@ -20,7 +20,7 @@
 :uri-plugin: https://github.com/danyill/oscd-tp-multicast-naming
 :uri-ci-bundle: https://danyill.github.io/oscd-tp-multicast-naming/oscd-tp-multicast-naming.js
 :uri-material-icons: https://fonts.google.com/icons
-:uri-openscd-core-plugin-demo: https://danyill.github.io/oscd-tp-multicast-naming/index.deploy.html
+:uri-openscd-core-plugin-demo: https://aus-betz.github.io/oscd-tp-multicast-naming/index.deploy.html
 :source-highlighter: highlight.js
 
 == What is this?
